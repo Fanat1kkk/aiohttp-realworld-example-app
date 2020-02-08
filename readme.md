@@ -30,3 +30,5 @@ Init database:
 
 Run the server:
 > python -m conduit
+
+Postman collection: [RealWorld.postman_collection.json](https://github.com/nomhoi/aiohttp-realworld-example-app/blob/master/RealWorld.postman_collection.json)
