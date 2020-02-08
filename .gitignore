@@ -5,6 +5,7 @@
 /bower_components
 
 # IDEs and editors
+/venv
 /.idea
 .project
 .classpath
@@ -15,3 +16,4 @@
 #System Files
 .DS_Store
 Thumbs.db
+/db.sqlite3
