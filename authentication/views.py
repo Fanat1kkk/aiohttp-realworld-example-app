@@ -1,7 +1,7 @@
 from aiohttp import web
 from tortoise import exceptions
-from conduit.authentication.models import User
-from conduit.core.utils import get_token, error_response
+from authentication.models import User
+from core.utils import get_token, error_response
 
 routes = web.RouteTableDef()
 

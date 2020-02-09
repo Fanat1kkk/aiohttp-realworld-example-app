@@ -5,7 +5,7 @@ from conduit import settings
 async def init():
     await Tortoise.init(
         db_url=settings.DB_URL,
-        modules={'models': ['conduit.authentication.models']}
+        modules={'models': ['authentication.models']}
     )
     await Tortoise.generate_schemas()
 

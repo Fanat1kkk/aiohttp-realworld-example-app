@@ -6,7 +6,7 @@ import aiohttp_cors
 from aiohttp import web
 from aiohttp_jwt import JWTMiddleware
 from tortoise import Tortoise
-from conduit.authentication.views import routes as authentication_routes
+from authentication.views import routes as authentication_routes
 from conduit import settings
 
 asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
@@ -53,7 +53,7 @@ def main(argv):
 
     loop = asyncio.get_event_loop()
     loop.run_until_complete(Tortoise.init(db_url=settings.DB_URL,
-                                          modules={'models': ['conduit.authentication.models']}))
+                                          modules={'models': ['authentication.models']}))
 
     web.run_app(init(argv))
 

@@ -1,5 +1,5 @@
 from tortoise import fields
-from conduit.core.models import TimestampedMixin, AbstractBaseModel
+from core.models import TimestampedMixin, AbstractBaseModel
 
 
 class User(TimestampedMixin, AbstractBaseModel):
