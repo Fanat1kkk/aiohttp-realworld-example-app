@@ -1,7 +1,7 @@
 from aiohttp import web
 from tortoise import exceptions
 from authentication.models import User
-from core.utils import get_token, error_response
+from core.utils import error_response
 
 routes = web.RouteTableDef()
 
@@ -29,7 +29,7 @@ async def create_user(request):
                 "user": {
                     "email": user.email,
                     "username": user.username,
-                    "token": get_token(user.id)
+                    "token": user.token
                 }
             },
             status=201
@@ -56,7 +56,7 @@ async def login_user(request):
                         "user": {
                             "email": user.email,
                             "username": user.username,
-                            "token": get_token(user.id)
+                            "token": user.token
                         }
                     },
                     status=200
@@ -82,7 +82,7 @@ async def get_user(request):
                     "user": {
                         "email": user.email,
                         "username": user.username,
-                        "token": get_token(user.id)
+                        "token": user.token
                     }
                 },
                 status=200
