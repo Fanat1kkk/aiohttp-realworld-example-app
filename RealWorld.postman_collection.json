@@ -123,6 +123,49 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "0.0.0.0:8080/api/user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNTg2MjY3NzQ2fQ.8Qks1cyQhLP6984fHaa-k7sjz3j9re5FQE0osuiuG0E",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user\":{\n  \t\"username\": \"Jack\",\n    \"email\": \"jake_2@jake.jake\",\n    \"bio\": \"I like to skateboard\",\n    \"image\": \"https://i.stack.imgur.com/xHWG8_4.jpg\"    \n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "0.0.0.0:8080/api/user",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}

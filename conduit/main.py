@@ -1,13 +1,14 @@
+import aiohttp_cors
+import asyncio
 import logging
 import sys
-import asyncio
 import uvloop
-import aiohttp_cors
 from aiohttp import web
 from aiohttp_jwt import JWTMiddleware
 from tortoise import Tortoise
-from authentication.views import routes as authentication_routes
 from conduit import settings
+from authentication.views import routes as authentication_routes
+from profiles.views import routes as profiles_routes
 
 asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
@@ -29,6 +30,7 @@ def init(argv=None):
     )
 
     app.router.add_routes(authentication_routes)
+    app.router.add_routes(profiles_routes)
 
     # Configure default CORS settings.
     cors = aiohttp_cors.setup(app, defaults={
@@ -53,7 +55,7 @@ def main(argv):
 
     loop = asyncio.get_event_loop()
     loop.run_until_complete(Tortoise.init(db_url=settings.DB_URL,
-                                          modules={'models': ['authentication.models']}))
+                                          modules={'models': settings.MODELS}))
 
     web.run_app(init(argv))
 

@@ -1,7 +1,7 @@
 from aiohttp import web
 from tortoise import exceptions
-from authentication.models import User
 from core.utils import error_response
+from authentication.models import User
 
 routes = web.RouteTableDef()
 
@@ -63,30 +63,6 @@ async def login_user(request):
                 )
             else:
                 return error_response("password", "password error")
-        else:
-            return error_response("user", "user not found")
-    except exceptions.IntegrityError as err:
-        return error_response("database error", str(err))
-    except Exception as err:
-        return error_response("error", str(err))
-
-
-@routes.get('/api/user')
-async def get_user(request):
-    try:
-        user_id = int(request['payload']['id'])
-        user = await User.filter(id=user_id).first()
-        if user is not None:
-            return web.json_response(
-                {
-                    "user": {
-                        "email": user.email,
-                        "username": user.username,
-                        "token": user.token
-                    }
-                },
-                status=200
-            )
         else:
             return error_response("user", "user not found")
     except exceptions.IntegrityError as err:
