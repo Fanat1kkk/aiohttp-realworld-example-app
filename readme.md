@@ -39,8 +39,12 @@ Postman collection: [RealWorld.postman_collection.json](https://github.com/nomho
 ## PostgreSQL
 
 Set these variables in conduit.settings:
-> DB_URL = "postgres://postgres:postgres@0.0.0.0:5432/postgres"
-> DB_URL_TEST = "postgres://postgres:postgres@0.0.0.0:5432/test_{}"
+```python
+DB_URL = "postgres://postgres:postgres@0.0.0.0:5432/postgres"
+DB_URL_TEST = "postgres://postgres:postgres@0.0.0.0:5432/test_{}"
+```
 
 Run the container:
 > docker-compose up -d
+
+
