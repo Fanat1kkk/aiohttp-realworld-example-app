@@ -9,6 +9,7 @@ from tortoise import Tortoise
 from conduit import settings
 from authentication.views import routes as authentication_routes
 from profiles.views import routes as profiles_routes
+from articles.views import routes as articles_routes
 
 asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
@@ -22,6 +23,7 @@ def init(argv=None):
         middlewares=[
             JWTMiddleware(
                 settings.SECRET_KEY,
+                auth_scheme='Token',
                 whitelist=[
                     r'/api/users',
                 ]
@@ -31,6 +33,7 @@ def init(argv=None):
 
     app.router.add_routes(authentication_routes)
     app.router.add_routes(profiles_routes)
+    app.router.add_routes(articles_routes)
 
     # Configure default CORS settings.
     cors = aiohttp_cors.setup(app, defaults={
